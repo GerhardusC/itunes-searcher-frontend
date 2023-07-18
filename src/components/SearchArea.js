@@ -23,7 +23,7 @@ const SearchArea = () => {
     if (!term.includes("&")) {
       try {
         dispatch(setFetchingStatus(true));
-        let res = await fetch(`https://itunes-searcher-backend-production.up.railway.app/api?term=${term}&type=${type}`);
+        let res = await fetch(`/api?term=${term}&type=${type}`);
         searchResults = await res.json();
       } catch (err) {
         //If there is an error in the fetch we make a result that has a similar object structure to the normal results for convenience.
