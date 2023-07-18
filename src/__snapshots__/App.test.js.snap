@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Favourites display correctly 1`] = `
+<div>
+  No favourites to display
+</div>
+`;
+
+exports[`Navigation bar renders correctly 1`] = `
+<ul
+  className="navigation-bar"
+>
+  <li>
+    <button
+      className="active-nav-button"
+      onClick={[Function]}
+    >
+      Search
+    </button>
+  </li>
+  <li>
+    <button
+      className="inactive-nav-button"
+      onClick={[Function]}
+    >
+      Favourites
+    </button>
+  </li>
+</ul>
+`;
+
+exports[`Search area display correctly 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <div>
+    Enter search term:
+  </div>
+  <input
+    onChange={[Function]}
+    placeholder="search"
+    required={true}
+    value=""
+  />
+  <div>
+    Select category:
+  </div>
+  <select
+    onChange={[Function]}
+  >
+    <option
+      value="all"
+    >
+      all
+    </option>
+    <option
+      value="music"
+    >
+      music
+    </option>
+    <option
+      value="movie"
+    >
+      movie
+    </option>
+    <option
+      value="podcast"
+    >
+      podcast
+    </option>
+    <option
+      value="audiobook"
+    >
+      audio book
+    </option>
+    <option
+      value="software"
+    >
+      software
+    </option>
+    <option
+      value="ebook"
+    >
+      ebook
+    </option>
+    <option
+      value="tvShow"
+    >
+      tv show
+    </option>
+    <option
+      value="shortFilm"
+    >
+      short film
+    </option>
+    <option
+      value="musicVideo"
+    >
+      music video
+    </option>
+  </select>
+  <button
+    className="search-button"
+    type="submit"
+  >
+    Search
+  </button>
+</form>
+`;
+
+exports[`Search results display correctly 1`] = `null`;

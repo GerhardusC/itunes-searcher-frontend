@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import SearchArea from './components/SearchArea'
+import SearchResultsDisplay from './components/SearchResultsDisplay'
+import NavigationBar from './components/NavigationBar'
+import DisplayFavourites from './components/DisplayFavourites'
+import { useSelector } from 'react-redux/es/hooks/useSelector'
 
 function App() {
+  const navigationState = useSelector(state => state.navigation.value)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='main-container'>
+      <NavigationBar />
+      {navigationState === "search" ?
+        <div>
+          <SearchArea />
+          <SearchResultsDisplay />
+        </div> 
+        : navigationState === "favourites" ?
+        <div>
+          <DisplayFavourites />
+        </div> :
+        <></>
+      }
+      <div className='right-bar'>
+        
+      </div>
     </div>
   );
 }

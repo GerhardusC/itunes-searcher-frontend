@@ -1,38 +1,207 @@
-.App {
-  text-align: center;
+/* The styles are simple enough to add to one page. */
+body {
+    background-color: #4895EF;
+    color: white;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#root {
+    display: flex;
+    justify-content: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Styles for navigation bar. */
+.navigation-bar {
+    position: fixed;
+    left: 0;
+    margin-top: 0;
+    padding-left: 0;
+    padding-top: 10px;
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+    width: 280px;
+    background-color: #3F37C9;
+    height: 100vh;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.navigation-bar button {
+    width: 100%;
+    height: 50px;
+    font-size: x-large;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.1s;
+    color: white;
+    font-family: 'Montserrat';
+    font-weight: bold;
 }
 
-.App-link {
-  color: #61dafb;
+.active-nav-button {
+    background-color: #4895EF;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.inactive-nav-button {
+    background-color: #4361EE;
+}
+
+.inactive-nav-button:hover {
+    transform: scale(1.05);
+}
+
+/* Styles for displaying search results and favourites. */
+
+table {
+    width: 700px;
+    background-color: #3A0CA3;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin: 20px 0;
+    font-size: large;
+    padding: 10px;
+    border-collapse: collapse;
+}
+
+tr {
+    border-bottom: 2px solid #a5a5a5;
+    transition: background-color 0.2s;
+}
+
+.not-favourited-row:hover {
+    background-color: #4B3F72;
+}
+
+td {
+    margin: 10px 0;
+}
+
+td, th {
+    border: none;
+    padding: 10px;
+}
+
+img {
+    width: 100%;
+}
+
+.favourite-button {
+    border: none;
+    background-color: #4361EE;
+    color: white;
+    font-size: x-large;
+    border-radius: 5px;
+    transition: transform 0.2s;
+}
+.favourite-button:hover {
+    transform: scale(1.15);
+}
+
+.already-favourited-row {
+    background-color: #274f70;
+}
+
+.remove-button {
+    font-size: x-large;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0);
+    transition: transform 0.2s;
+}
+
+.remove-button:hover {
+    transform: scale(1.15);
+}
+
+/* Styles for the search section. */
+
+form {
+    background-color: #3A0CA3;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    gap: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+    align-items: center;
+    font-size: larger;
+    width: 700px;
+}
+
+input {
+    height: 30px;
+    font-size: larger;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+
+}
+
+select{
+    font-family: 'Montserrat';
+    text-align: center;
+    font-size: larger;
+    width: 50%;
+    cursor: pointer;
+    background-color: #4361EE;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px rgb(27, 39, 65);
+}
+
+.search-button {
+    font-family: 'Montserrat';
+    height: 40px;
+    width: 50%;
+    font-size: larger;
+    cursor: pointer;
+    color: white;
+    background-color: #4361EE;
+    border: none;
+    border-radius: 5px;
+    transition: transform 0.2s;
+    box-shadow: 1px 1px 5px rgb(27, 39, 65);
+}
+
+.search-button:hover {
+    transform: scale(1.05);
+}
+
+/* Cohesive drop shadows for table, form and nav bar. */
+table, form, .navigation-bar {
+    box-shadow: 1px 1px 10px rgb(50, 79, 141);
+}
+
+/* Some responsive design done through media queries. */
+@media (max-width: 1400px) {
+    #root{
+        justify-content: end;
+        padding-right: 20px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .navigation-bar {
+        position: relative;
+        height: auto;
+        width: 100%;
+    }
+    table, form {
+        width: 100%;
+        font-size: medium;
+        border-radius: 0;
+    }
+    #root {
+        padding-right: 0;
+    }
+    td, th {
+        padding: 5px 0;
+    }
 }
