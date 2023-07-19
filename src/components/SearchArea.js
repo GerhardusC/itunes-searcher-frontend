@@ -14,8 +14,10 @@ const SearchArea = () => {
   const dispatch = useDispatch();
   const [userSearchType, setUserSearchType] = useState("all");
   const [userSearchValue, setUserSearchValue] = useState("");
-  const fetchingStatus = useSelector(state => state.navigation.fetchingStatus);
-  
+  const fetchingStatus = useSelector(
+    (state) => state.navigation.fetchingStatus
+  );
+
   //This function fetches results from our express backend with url queries.
   const getResults = async (term, type) => {
     let searchResults = {};
@@ -57,30 +59,26 @@ const SearchArea = () => {
       dispatch(update(searchResults));
     }
   };
-  
+
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
         //This prevents the user from fetching again with the form submission before the fetch is completed.
-        if(!fetchingStatus){
+        if (!fetchingStatus) {
           getResults(userSearchValue, userSearchType);
           setUserSearchValue("");
         }
       }}
     >
-      <div>
-        Enter search term: 
-      </div>
+      <div>Enter search term:</div>
       <input
         placeholder="search"
         required
         onChange={(e) => setUserSearchValue(e.target.value)}
         value={userSearchValue}
       ></input>
-      <div>
-        Select category:
-      </div>
+      <div>Select category:</div>
       <select
         onChange={(e) => {
           setUserSearchType(e.target.value);
@@ -97,7 +95,9 @@ const SearchArea = () => {
         <option value="shortFilm">short film</option>
         <option value="musicVideo">music video</option>
       </select>
-      <button type="submit" className="search-button">Search</button>
+      <button type="submit" className="search-button">
+        Search
+      </button>
     </form>
   );
 };
