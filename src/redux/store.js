@@ -10,5 +10,5 @@ export const store = configureStore({
     favourites: favouritesSlice,
     navigation: navigationStateSlice,
   },
-  devTools: false,
+  devTools: true,
 });
