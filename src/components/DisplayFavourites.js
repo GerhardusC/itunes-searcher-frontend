@@ -36,7 +36,7 @@ const DisplayFavourites = () => {
                   </td>
                   <td>{favourite?.trackName || favourite.collectionName}</td>
                   <td>{favourite.artistName}</td>
-                  <td>{favourite.collectionName}</td>
+                  <td>{favourite?.collectionName || favourite.trackName}</td>
                   <td>
                     <button
                       className="remove-button"
