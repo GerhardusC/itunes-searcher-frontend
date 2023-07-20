@@ -5,21 +5,21 @@ import { addFavourite } from "../redux/slices/favouritesSlice";
 //This component displays the search results in a table based on the user search input submitted from the search area component.
 const SearchResultsDisplay = () => {
   const searchResults = useSelector((state) => state.search.data);
-  const currentIds = useSelector((state) => state.favourites.currentIds);
   const fetchingStatus = useSelector(
     (state) => state.navigation.fetchingStatus
   );
   const searchTerm = useSelector((state) => state.navigation.searchTerm);
   const dispatch = useDispatch();
-
   //If data is being fetched return fetching data.
   if (fetchingStatus) {
     return <div>Fetching data...</div>;
   }
   //If search results are returned and the resultCount property says that there are results related to the search term,
   //then return a table displaying the results.
+
   if (searchResults && searchResults.resultCount > 0) {
     const searchIds = Object.keys(searchResults.results);
+
     return (
       <div>
         <p>
@@ -39,19 +39,7 @@ const SearchResultsDisplay = () => {
             <tbody>
               {searchIds.map((key) => {
                 return (
-                  <tr
-                    key={key}
-                    className={
-                      !currentIds.includes(
-                        searchResults.results[key].trackViewUrl
-                      ) &&
-                      !currentIds.includes(
-                        searchResults.results[key].collectionViewUrl
-                      )
-                        ? "not-favourited-row"
-                        : "already-favourited-row"
-                    }
-                  >
+                  <tr key={key}>
                     {/* 
                                                 Depending on which artwork exists, we display it in the table, some results only have 30px and some have only 60 px etc.
                                             */}
@@ -80,23 +68,15 @@ const SearchResultsDisplay = () => {
                                                     If the item is not currently favourited we give a favourite button, otherwise we return an empty.
                                                     All collectionIds in the currentIds array belong to audio books, and all the trackIds belong to everything else.
                                                 */}
-                      {!currentIds.includes(
-                        searchResults.results[key].trackViewUrl
-                      ) &&
-                      !currentIds.includes(
-                        searchResults.results[key].collectionViewUrl
-                      ) ? (
-                        <button
-                          className="favourite-button"
-                          onClick={() =>
-                            dispatch(addFavourite(searchResults.results[key]))
-                          }
-                        >
-                          ⭐
-                        </button>
-                      ) : (
-                        <></>
-                      )}
+                      <button
+                        className="favourite-button"
+                        onClick={(e) => {
+                          dispatch(addFavourite(searchResults.results[key]));
+                          e.target.style.display = "none";
+                        }}
+                      >
+                        ⭐
+                      </button>
                     </td>
                   </tr>
                 );
